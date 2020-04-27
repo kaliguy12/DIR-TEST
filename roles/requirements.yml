@@ -1,0 +1,3 @@
+- src: https://github.com/kaliguy12/create-dir.git
+  version: dev
+  scm: git

@@ -1,0 +1,25 @@
+---
+- hosts: all
+  gather_facts: false
+  vars:
+    path: "/{{ application_filesystem }}/{{ applicationname }}/{{ env }}/applicaionsoftwares"
+    dir_user_id: test 
+    dir_group_id: test_g
+
+
+  roles:
+
+   - name: create directory
+     role: create-dir
+     targetdir_lists:
+      - { directory_structure: "{{ path }}", dir_permission: '0755', dir_recursive: 'yes', dir_user_name: "{{ dir_user_id }}", dir_group_name: "{{ dir_group_id }}", }
+     tags:
+      - test_dir
+
+
+   - name: update permissions 
+     role: create-dir
+     targetdir_lists:
+       - { directory_structure: "{{ path }}", dir_permission: '0755', dir_recursive: 'yes', dir_user_name: "{{ dir_user_id }}", dir_group_name: "{{ dir_group_id }}", }
+     tags:
+       - test_update_permissions
